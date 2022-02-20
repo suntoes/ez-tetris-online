@@ -1,6 +1,6 @@
 <img src="https://github.com/suntoes/ez-tetris-online/blob/master/utils/ez-tetris.jpg" alt="ez tetris logo" width="120"/>
 
-# ez-snek-game
+# ez tetris
 
 ### [Click here for replit live](https://ez-tetris-online.suntoes.repl.co/)
 
