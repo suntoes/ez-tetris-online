@@ -95,7 +95,7 @@ Now increment every value of <b>[ 1, 4, 5, 6 ]</b> which would be <b>[ 2, 5, 6, 
 </table>
 <br>
 
-Then move <b>[ 2, 5, 6, 7 ]</b> down by adding width = 4 to each value which would be <b>[ 4, 9, 10, 11 ]</b>.
+Then move <b>[ 2, 5, 6, 7 ]</b> down by adding width = 4 to each value which would be <b>[ 6, 9, 10, 11 ]</b>.
 
 <table>
   <tr>
