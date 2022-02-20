@@ -8,6 +8,9 @@
 <img src="https://github.com/suntoes/ez-tetris-online/blob/master/utils/ez-tetris-gameplay.jpg" alt="gameplay" width="400"/>
 </a>
 
+## keybindings...
+It's your typical <b><i>wasd</i></b> or <b>arrow keys</b> for movements. To drop the tetromino, simply press <b>x</b>.
+
 ## A simple fullstack web app, for practice...
 This is a personal exercise of mine prior to the snake game i've made. 
 The sole purpose of this project is to make me immerse and familiarize myself more into the basic of back-end techs which I've recently just learned. 
