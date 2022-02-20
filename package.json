@@ -1,0 +1,23 @@
+{
+  "name": "ez-tetris",
+  "version": "1.0.0",
+  "description": "a simple tetris game with online 2 player feature",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mar Santos",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "moment": "^2.29.1",
+    "mongodb": "^4.4.0",
+    "mongoose": "^6.2.2",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.1"
+  }
+}
