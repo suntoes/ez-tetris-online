@@ -31,7 +31,7 @@ If we were to take the first out of four elements for example, and set the width
 ```
 <br>
 
-Now put <b>[ 1, 4, 5, 6 ]</b> into an iterator that shades up the <b>n</b> value of an 4x4 2d array DOM table that has a length of 16. 
+Now put <b>[ 1, 4, 5, 6 ]</b> into an iterator that shades up the <b>nth</b> index of an 4x4 2d array DOM table that has a length of 16. 
 Remember that array starts with an index value of 0. The result would go something like this:
 
 <table>
