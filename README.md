@@ -13,7 +13,7 @@ It's your typical <b><i>wasd</i></b> or <b>arrow keys</b> for movements. To drop
 
 ## A simple fullstack web app, for practice...
 This is a personal exercise of mine prior to the snake game i've made. 
-The sole purpose of this project is to make me immerse and familiarize myself more into the basic of back-end techs which I've recently just learned. 
+The sole purpose of this project is to immerse and familiarize myself more into the basics of back-end techs which I've recently just learned. 
 Feel free to checkout my code, and/or try out the demo!
 
 ## ez tetris' top 3 syntax are...
@@ -21,7 +21,7 @@ Feel free to checkout my code, and/or try out the demo!
   <summary>Arrays</summary>
 <br>
 
-There are 4 arrays inside the array of T tetromino, each defines a unique rotation but overall represents the T shaped tetromino. 
+Here are 4 arrays inside an array of T tetromino, each defines a unique rotation but overall represents the T shaped tetromino. 
 If we were to take the first out of four elements for example, and set the width as 4 that represents a 4x4 2d array table, the array would sum up to be <b>[ 1, 4, 5, 6 ]</b>.
 
 ```javascript
