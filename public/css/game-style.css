@@ -16,6 +16,23 @@ body {
     filter: drop-shadow(2px 2px 2px black)
 }
 
+.nameplate {
+    text-align: right;
+    padding: 0;
+    width: 302px;
+    background-color: #636363;
+}
+
+#opponent {
+    display: none;
+}
+
+#nameplate-text, #opp-nameplate-text {
+    font-size: 25px;
+    overflow-x: hidden;
+    margin: 3px 4px -2px 0;
+}
+
 .display-wrap {
     display: flex;
 }
@@ -84,7 +101,7 @@ body {
 }
 
 .grid-two {
-    display: none;
+    display: flex;
 }
 
 .next-list {
@@ -149,9 +166,19 @@ button:hover {
     width: 100%;
     text-align: center;
     background-color: #212121;
-    color: #636363;
     box-sizing: border-box;
     border: solid 1px #636363;
+}
+
+#player-score, #opponent-score {
+    color: #636363;
+}
+
+p {
+    margin: -5px 0;
+    color: #636363;
+    padding: 0;
+    text-align: center;
 }
 
 .next-item {

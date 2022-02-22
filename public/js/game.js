@@ -5,8 +5,11 @@ const socket = io();
 let { username, host } = Qs.parse(location.search, { 
     ignoreQueryPrefix: true
 });
+
+const playerName = document.getElementById('nameplate-text');
+const opponentName = document.getElementById('opp-nameplate-text');
+const opponentDiv = document.getElementById('opponent');
 const opponentGrid = document.querySelector('.grid-two');
-opponentGrid.style.display = 'none';
 const opponentScore = document.querySelector('#opponent-score');
 const opponentSection = document.getElementById('opponent-score-section');
 const fillerDiv = document.getElementById('filler');
@@ -18,6 +21,8 @@ if(!host) {
     host = username;
     emitNotif('invite someone w/ userID', notif, container);
 }
+
+playerName.innerText = username;
 
 let playSolo = true;
 let playSoloOngoing = false;
@@ -41,7 +46,7 @@ socket.emit('joinRoom', { username, host });
 socket.on('userJoin', user => {
     
     playSolo = false;
-    opponentJoined();
+    opponentJoined(user);
 
     if(!player.alive) {
         emitNotif(`${user} joined.`, notif, container);
@@ -75,7 +80,11 @@ socket.on('gameOpponentData', user => {
     if(opponent.alive) {
         opponentGrid.innerHTML = opponent.screen;
         opponentScore.innerText = opponent.score;
+        opponentScore.style.color = '#636363';
+
+        if(opponent.score > 0) opponentScore.style.color = tetrominoesColors[opponent.score - ( 7 * Math.floor(opponent.score/7) )];
     }
+
     if(!opponent.alive) opponentGrid.style.filter = 'opacity(0.5)';
 
     if(playSoloOngoing) return
@@ -96,6 +105,14 @@ function sendGameDataToServer() {
     if(!playSolo) socket.emit('gameData', player);
 }
 
+function opponentJoined(user) {
+    fillerDiv.style.display = 'none';
+    opponentSection.style.display = 'flex';
+    opponentGrid.style.display = 'flex';
+    opponentDiv.style.display = 'block'
+    opponentName.innerText = player.name !== player.host ? player.host : user;
+}
+
 if(player.name !== player.host) {
     playSoloOngoing = true;
     playSolo = false;
@@ -103,16 +120,11 @@ if(player.name !== player.host) {
     emitNotif(`u joined ${player.host}`, notif, container);
 };
 
-function opponentJoined() {
-    fillerDiv.style.display = 'none';
-    opponentSection.style.display = 'flex';
-    opponentGrid.style.display = 'flex';
-}
-
 function opponentDisconnect() {
     fillerDiv.style.display = 'block';
     opponentSection.style.display = 'none';
     opponentGrid.style.display = 'none';
+    opponentDiv.style.display = 'none';
     opponentGrid.innerHTML = stockGrid;
     opponent = {
         'name': null,
@@ -197,8 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let interval = setInterval(()=>{
                 if(count === -1) {
                     count = 3;
-                    playerScore.style.color = '';
-                    opponentScore.style.color = '';
+                    playerScore.style.color = '#636363';
+                    opponentScore.style.color = '#636363';
                     opponentScore.innerText = 0;
                     playerScore.innerText = 0;
                     gameOnPause = false;
@@ -274,11 +286,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scoreUpdate() {
+        if(player.score > 0) {
+            playerScore.style.color = tetrominoesColors[player.score - ( 7 * Math.floor(player.score/7) )]
+        }
+
         playerScore.innerText = player.score;
     }
-    
+
     function toggleRun() {
-        
         if(gameToggle.innerHTML === 'PAUSE') {
             pauseGame();
             gameOnPause = true;
@@ -626,6 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTetromino = theTetrominoes[currentShape][currentRotation];
         speed = 1000;
         player.score = 0;
+        playerScore.style.color = '#636363';
         grid.style.filter = '';
         opponentGrid.style.filter = '';
         playSoloOngoing = false;
